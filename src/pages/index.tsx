@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import Tabela from "@/components/Tabela";
 import Cliente from "@/core/Cliente";
+import Botao from "@/components/Botao";
 
 export default function Home() {
   const clientes = [
@@ -28,6 +29,9 @@ export default function Home() {
       `}
     >
       <Layout titulo="Cadastro Simples">
+        <div className={`flex justify-end`}>
+          <Botao cor="green" className="mb-4">Novo Cliente</Botao>
+        </div>
         <Tabela 
         clientes={clientes} 
         clienteSelecionado={clienteSelecionado} 
