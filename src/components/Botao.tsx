@@ -1,3 +1,5 @@
+import React from "react";
+
 interface BotaoProps {
   cor: "blue" | "gray" | "green";
   children: React.ReactNode;
