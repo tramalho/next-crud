@@ -6,6 +6,7 @@ import Formulario from "@/components/Formulario";
 import { useState } from "react";
 
 export default function Home() {
+  const [cliente, setCliente] = useState<Cliente>(new Cliente());
   const [visivel, setVisivel] = useState<"tabela" | "form">("tabela");
 
   const clientes = [
@@ -17,7 +18,9 @@ export default function Home() {
   ];
 
   function clienteSelecionado(cliente: Cliente) {
-    console.log(cliente);
+    setCliente(cliente);
+    setVisivel("form");
+    console.log(`Selecionar... ${cliente.nome}`);
   }
 
   function clienteExcluido(cliente: Cliente) {
@@ -26,6 +29,7 @@ export default function Home() {
 
   function salvarCliente(cliente: Cliente) {
     console.log(cliente);
+    setVisivel("tabela");
   }
 
   function renderTabela() {
@@ -35,7 +39,7 @@ export default function Home() {
           <Botao
             cor="green"
             className="mb-4"
-            onClick={() => setVisivel("form")}
+            onClick={() => clienteSelecionado(new Cliente())}
           >
             Novo Cliente
           </Botao>
@@ -60,7 +64,7 @@ export default function Home() {
       <Layout titulo="Cadastro Simples">
         {visivel === "form" ? (
           <Formulario 
-          cliente={clientes[0]} 
+          cliente={cliente} 
           cancelar={() => setVisivel("tabela")}
           clienteMudou={salvarCliente}
           />
