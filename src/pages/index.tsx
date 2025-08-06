@@ -23,6 +23,11 @@ export default function Home() {
     console.log(`Selecionar... ${cliente.nome}`);
   }
 
+  function novoCliente() {
+    setCliente(new Cliente());
+    setVisivel("form");
+  }
+
   function clienteExcluido(cliente: Cliente) {
     console.log(`Excluir... ${cliente.nome}`);
   }
@@ -39,7 +44,7 @@ export default function Home() {
           <Botao
             cor="green"
             className="mb-4"
-            onClick={() => clienteSelecionado(new Cliente())}
+            onClick={novoCliente}
           >
             Novo Cliente
           </Botao>
